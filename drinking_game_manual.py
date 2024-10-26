@@ -132,10 +132,14 @@ def main():
     # Display rules
     st.header("Règles du jeu")
     for i, (rule, sip_count) in enumerate(dashboard.rules):
-        col1, col2, col3 = st.columns([3, 1, 1])
+        col1, col2, col3, col4 = st.columns([3, 1, 1, 1])
         col1.write(f"{rule}")
         col2.write(f"{sip_count} gorgées")
-        if col3.button("Supprimer", key=f"delete_{i}"):
+        if col3.button("🍺", key=f"drink_{i}"):
+            if dashboard.add_sip("Règle", sip_count):
+                st.success(f'{sip_count} gorgées ajoutées pour la règle!')
+                st.experimental_rerun()
+        if col4.button("Supprimer", key=f"delete_{i}"):
             if dashboard.delete_rule(i):
                 st.experimental_rerun()
 
