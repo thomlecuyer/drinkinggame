@@ -3,7 +3,7 @@ import time
 import requests
 
 st.set_page_config(page_title="Les jeux d'alcool entre potes", page_icon="🍺")
-SERVER_URL = "rowz0.pythonanywhere.com"
+SERVER_URL = "https://rowz0.pythonanywhere.com/"
 
 class BeerSipDashboard:
     def __init__(self):
