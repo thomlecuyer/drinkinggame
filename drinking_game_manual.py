@@ -123,6 +123,13 @@ def main():
     if 'success_message' not in st.session_state:
         st.session_state.success_message = None
 
+    if new_rule.strip():  # Check if the rule is not empty
+    if dashboard.add_rule(new_rule, rule_sip_count):
+            st.success('Règle ajoutée!')
+            st.experimental_rerun()  # Changed from st.rerun()
+    else:
+        st.error('ENTREZ UNE RÈGLE SVP.')
+
     username = st.text_input('Entrez votre nom')
     if username:
         dashboard = st.session_state.dashboard
@@ -205,4 +212,4 @@ if __name__ == "__main__":
         if 'dashboard' in st.session_state:
             dashboard = st.session_state.dashboard
             if dashboard.check_for_updates():
-                st.rerun()
+                st.experimental_rerun()
