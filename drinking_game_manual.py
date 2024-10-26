@@ -2,12 +2,13 @@ import streamlit as st
 import requests
 import time
 import json
+import os
 
 # Set page config
 st.set_page_config(page_title="Les jeux d'alcool entre potes", page_icon="🍺")
 
 # Use Streamlit's secrets management for the server URL
-SERVER_URL = st.secrets["SERVER_URL"]
+SERVER_URL = os.environ.get('SERVER_URL', 'http://localhost:5000')
 
 class BeerSipDashboard:
     def __init__(self):
